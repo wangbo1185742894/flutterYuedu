@@ -27,8 +27,12 @@ class MyApp extends StatelessWidget {
       MaterialApp(
         title: '爱尚阅读',
         theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Colors.cyan,
+          accentColor: Colors.deepPurple,
           primarySwatch: Colors.yellow,
-          scaffoldBackgroundColor: Colors.white
+          scaffoldBackgroundColor: Colors.white,
+          tabBarTheme: TabBarTheme(labelColor: Colors.black54,unselectedLabelColor: Colors.yellow,unselectedLabelStyle: TextStyle(color: Colors.green))
         ),
         home: MainPage(),
         onGenerateRoute: Application.router.generator,
