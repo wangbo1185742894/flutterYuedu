@@ -2,35 +2,88 @@ import 'package:flutter/material.dart';
 import 'package:flutter_yuedu/routers/fluro_navigator.dart';
 import 'package:flutter_yuedu/routers/routers.dart';
 import 'dart:math';
+import 'CountContainer.dart';
+import 'package:flutter_yuedu/routers/application.dart';
+import 'package:event_bus/event_bus.dart';
 
 class BookHome extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
+    Application.bookEventBus = new EventBus();
+
     return BookHomeState();
   }
 }
 
 class BookHomeState extends State<BookHome> {
+  int count = 0;
+  var msg = "";
+
   @override
   void initState() {
-    // TODO: implement initState
+    Application.bookEventBus.on<String>().listen((event) {
+      setState(() {
+        msg = event;
+      });
+    });
+
     super.initState();
+  }
+
+  void incream() {
+    setState(() {
+      count++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return Scaffold(
         appBar: AppBar(
-          title: Text("标题"),
+          title: Text("标题$msg"),
         ),
-        body: Container(
-          child: CustomPaint(
-            painter: TempPainter(),
-            size: Size(300, 300),
-          ),
-        ));
+        body: CountContainer(
+            incream: incream,
+            model: this,
+            child: Column(
+              children: <Widget>[
+                Counter(),
+                FlatButton(
+                  onPressed: jumpToPointerEvent,
+                  child: Text("Notification"),
+                  color: Colors.green,
+                ),
+                FlatButton(
+                  onPressed: jumpToAnimation,
+                  child: Text("jumpToAnimation"),
+                  color: Colors.green,
+                ),
+              ],
+            )
+
+//            Container(
+//
+//              child: Column(
+//                children: <Widget>[
+//
+//                  Padding(
+//                    padding: EdgeInsets.all(10),
+//                    child: FlatButton(
+//                      onPressed: jumpToPointerEvent,
+//                      child: Text("手势"),
+//                      color: Colors.red,
+//                    ),
+//                  )
+//                ],
+//              ),
+////          child: CustomPaint(
+////            painter: TempPainter(),
+////            size: Size(300, 300),
+////          ),
+//            )
+            ));
 //        Stack(
 //          children: <Widget>[
 //            Container(
@@ -128,8 +181,50 @@ class BookHomeState extends State<BookHome> {
 //      ),
   }
 
+//
+//  Widget buildCounter(){
+//
+//
+//  }
+
+  jumpToAnimation() {
+    //    Application.bookEventBus.fire("123456789");
+    NavigatorUtils.push(context, Routes.animationPage);
+  }
+
+
+  jumpToNotification() {
+    //    Application.bookEventBus.fire("123456789");
+    NavigatorUtils.push(context, Routes.pointerEvent+"?name=123");
+  }
+
+  jumpToPointerEvent() {
+
+    NavigatorUtils.push(context, Routes.pointerEvent+"?name=123");
+//    NavigatorUtils.push(context, Routes.pointerEvent);
+  }
+
   jumpToDetail() {
     NavigatorUtils.push(context, Routes.videoDetail);
+//   NavigatorUtils.pushResult(context, path, function)
+  }
+}
+
+class Counter extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    CountContainer state = CountContainer.of(context);
+    return Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            FlatButton(
+              onPressed: state.incream,
+              child: Text("手势${state.model.count}"),
+              color: Colors.red,
+            ),
+          ],
+        ));
   }
 }
 
@@ -158,16 +253,9 @@ class TempPainter extends CustomPainter {
           i % 2 == 0
               ? getPaintColor(Colors.green)
               : getPaintColor(Colors.deepOrangeAccent));
-
-
     }
 
-    canvas.drawArc(
-        wheelRect1,
-        0,
-        2 * pi,
-        true,
-        getPaintColor(Colors.white));
+    canvas.drawArc(wheelRect1, 0, 2 * pi, true, getPaintColor(Colors.white));
 
 //    canvas.drawArc(wheelRect, 0, radio, true, getPaintColor(Colors.green));
 //    canvas.drawArc(wheelRect, radio, radio, true, getPaintColor(Colors.deepPurpleAccent));

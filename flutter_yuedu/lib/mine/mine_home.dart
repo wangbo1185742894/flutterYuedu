@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:date_format/date_format.dart';
 
 class MineHome extends StatefulWidget {
   @override
@@ -59,7 +60,7 @@ class MineHomeState extends State<MineHome> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[Text("社区人"), Text("2019年5月8日")],
+              children: <Widget>[Text("社区人"), Text(formatDate(DateTime.now(), [yyyy,"年",mm,"月",dd,"日",hh,":",n,":",s]))],
             )),
         Padding(
           padding: EdgeInsets.all(10),
