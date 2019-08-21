@@ -7,6 +7,7 @@ import 'routers.dart';
 /// fluro的路由跳转工具类
 class NavigatorUtils {
 
+
   static push(BuildContext context, String path,
       {bool replace = false, bool clearStack = false}) {
     Application.router.navigateTo(context, path, replace: replace, clearStack: clearStack, transition: TransitionType.native);
