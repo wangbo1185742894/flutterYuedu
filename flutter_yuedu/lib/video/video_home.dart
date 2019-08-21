@@ -58,12 +58,16 @@ class VideoHomeState extends State<VideoHome>
           labelColor: Colors.red,
           unselectedLabelColor: Colors.black87,
           tabs: _titleList.map((f) {
-            return Padding(padding: EdgeInsets.fromLTRB(0, 8, 0, 8),child: Text(
-              f,
-              style: TextStyle(fontSize: 15),
-            ),);
+            return Padding(
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+              child: Text(
+                f,
+                style: TextStyle(fontSize: 15),
+              ),
+            );
           }).toList(),
           controller: _tabController,
+
         ),
       ),
       body: new TabBarView(
@@ -71,62 +75,68 @@ class VideoHomeState extends State<VideoHome>
         children: _titleList.map((f) {
           return new ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(onTap:jumpVideo ,child:              Wrap(
-                  children: <Widget>[
-                    Image.network(
-                      "http://pic31.nipic.com/20130801/11604791_100539834000_2.jpg",
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            flex: 1,
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  "评论 0",
-                                  style: textStyle,
-                                ),
-                                Padding(padding: EdgeInsets.all(10)),
-                                Text(
-                                  "播放 0",
-                                  style: textStyle,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-                                Text(
-                                  "点赞 0",
-                                  style: textStyle,
-                                ),
-                                Padding(padding: EdgeInsets.all(10)),
-                                Text(
-                                  "差评 0",
-                                  style: textStyle,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),);
+                return GestureDetector(
+                  onTap: jumpVideo,
+                  child: Wrap(
 
+                    children: <Widget>[
+                      Image.network(
+                        "http://pic31.nipic.com/20130801/11604791_100539834000_2.jpg",
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  children: <Widget>[
+                                    Text(
+                                      "评论 0",
+                                      style: textStyle,
+                                    ),
+                                    Padding(padding: EdgeInsets.all(10)),
+                                    Text(
+                                      "播放 0",
+                                      style: textStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text(
+                                      "点赞 0",
+                                      style: textStyle,
+                                    ),
+                                    Padding(padding: EdgeInsets.all(10)),
+                                    Text(
+                                      "差评 0",
+                                      style: textStyle,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                );
               },
               itemCount: 100,
-              itemExtent: 250);
+              );
         }).toList(),
       ),
     );
   }
-  void jumpVideo(){
+
+  void jumpVideo() {
     NavigatorUtils.push(context, Routes.videoDetail);
   }
 }
