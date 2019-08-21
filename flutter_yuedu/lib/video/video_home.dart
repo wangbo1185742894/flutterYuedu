@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:flutter_yuedu/routers/routers.dart';
+import 'package:flutter_yuedu/routers/fluro_navigator.dart';
 
 class VideoHome extends StatefulWidget {
   @override
@@ -69,7 +71,7 @@ class VideoHomeState extends State<VideoHome>
         children: _titleList.map((f) {
           return new ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(onTap: ,child:              Wrap(
+                return GestureDetector(onTap:jumpVideo ,child:              Wrap(
                   children: <Widget>[
                     Image.network(
                       "http://pic31.nipic.com/20130801/11604791_100539834000_2.jpg",
