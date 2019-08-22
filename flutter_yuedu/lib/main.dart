@@ -6,9 +6,11 @@ import 'package:oktoast/oktoast.dart';
 import 'package:flutter_yuedu/routers/application.dart';
 import 'package:flutter_yuedu/main/mainPage.dart';
 import 'package:flutter_yuedu/routers/routers.dart';
+import 'package:flutter/rendering.dart';
 
 void main(){
   runApp(MyApp());
+//  debugPaintSizeEnabled = true;
 }
 
 class MyApp extends StatelessWidget {

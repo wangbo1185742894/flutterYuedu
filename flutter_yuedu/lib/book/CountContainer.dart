@@ -20,7 +20,7 @@ class  CountContainer extends InheritedWidget{
   @override
   bool updateShouldNotify(CountContainer oldWidget) {
     // TODO: implement updateShouldNotify
-    return this.model.count != oldWidget.model.count;
+//    return this.model.count != oldWidget.model.count;
   }
 
 }

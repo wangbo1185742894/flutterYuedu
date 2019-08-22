@@ -15,6 +15,88 @@ class BookHome extends StatefulWidget {
   }
 }
 
+class BookHomeState extends State<BookHome>
+    with SingleTickerProviderStateMixin {
+  List _titles = ["推荐", "男生", "女生", "图书"];
+
+  TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: _titles.length, vsync: this);
+    super.initState();
+  }
+
+//  [Text(_titles[0],maxLines: 1,style: TextStyle(fontSize: 16),),Text(_titles[1],maxLines: 1,style: TextStyle(fontSize: 16))]
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      color: Colors.redAccent,
+      height: MediaQuery.of(context).padding.top + 44,
+      child: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 55,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(
+                        (MediaQuery.of(context).size.width - 200) / 2,
+                        20,
+                        (MediaQuery.of(context).size.width - 200) / 2,
+                        4),
+                    child: TabBar(
+                        indicatorWeight: 1,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicatorColor: Colors.white70,
+                        labelColor: Colors.white,
+                        unselectedLabelColor: Colors.white70,
+                        unselectedLabelStyle: TextStyle(fontSize: 15),
+                        labelStyle: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        controller: _tabController,
+                        labelPadding: EdgeInsets.fromLTRB(3, 0, 3, 0),
+                        tabs: _titles.map((f) {
+                          return Text(f,
+                              maxLines: 1, style: TextStyle(fontSize: 16));
+                        }).toList()),
+                  ),
+                ),
+                Positioned(
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      onPressed: null),
+                  bottom: 0,
+                  right: 8,
+                )
+              ],
+            ),
+            Expanded(
+              child: Container(
+                child: TabBarView(
+                    controller: _tabController,
+                    children: _titles.map((f) {
+                      return Container(
+                        color: Colors.white,
+                        child: Text(f),
+                      );
+                    }).toList()),
+              ),
+              flex: 1,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+/*
 class BookHomeState extends State<BookHome> {
   int count = 0;
   var msg = "";
@@ -271,3 +353,4 @@ class TempPainter extends CustomPainter {
     return oldDelegate != this;
   }
 }
+*/

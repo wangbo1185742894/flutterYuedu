@@ -6,6 +6,7 @@ import 'package:flutter_yuedu/404.dart';
 import 'package:flutter_yuedu/video/video_detail.dart';
 import 'package:flutter_yuedu/book/pointer_event.dart';
 import 'package:flutter_yuedu/book/AnimationPage.dart';
+import 'package:flutter_yuedu/picture/PictureDetail.dart';
 
 class Routes {
   static List <IRouterProvider> _listRouter = [];
@@ -15,6 +16,8 @@ class Routes {
   static String pointerEvent = "/PointerEvent";
 
   static String animationPage = "/AnimationPage";
+
+  static String pictureDetailPage = "/PictureDetailPage";
 
   static void routerConfig(Router router){
 
@@ -30,6 +33,7 @@ class Routes {
     }));
     router.define(animationPage, handler:Handler(handlerFunc: (BuildContext context,Map<String ,List<String>> parm) => AnimationPage()));
 
+    router.define(pictureDetailPage, handler:Handler(handlerFunc: (BuildContext context,Map<String ,List<String>> parm) => PictureDetailPage()));
 
 
     _listRouter.clear();

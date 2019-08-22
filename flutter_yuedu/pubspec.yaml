@@ -63,6 +63,7 @@ dependencies:
   date_format: 1.0.6
   video_player: ^0.6.4
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
