@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_yuedu/routers/fluro_navigator.dart';
 import 'package:flutter_yuedu/routers/routers.dart';
 import 'dart:math';
-import 'CountContainer.dart';
+import 'package:flutter_yuedu/Other/CountContainer.dart';
 import 'package:flutter_yuedu/routers/application.dart';
 import 'package:event_bus/event_bus.dart';
+import 'BookTujianPage.dart';
+import 'BookBoyPage.dart';
 
 class BookHome extends StatefulWidget {
   @override
@@ -17,7 +19,9 @@ class BookHome extends StatefulWidget {
 
 class BookHomeState extends State<BookHome>
     with SingleTickerProviderStateMixin {
-  List _titles = ["推荐", "男生", "女生", "图书"];
+  List  _titles = ["推荐", "男生", "女生", "图书"];
+
+
 
   TabController _tabController;
 
@@ -79,14 +83,15 @@ class BookHomeState extends State<BookHome>
             ),
             Expanded(
               child: Container(
+                color: Colors.white,
                 child: TabBarView(
                     controller: _tabController,
-                    children: _titles.map((f) {
-                      return Container(
-                        color: Colors.white,
-                        child: Text(f),
-                      );
-                    }).toList()),
+                    children: [
+                     BookTuijianPage(),
+                      BookBoyPage(),
+                      BookBoyPage(),
+                      BookBoyPage(),
+                    ]),
               ),
               flex: 1,
             )

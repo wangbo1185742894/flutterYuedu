@@ -4,8 +4,8 @@ import 'router_init.dart';
 
 import 'package:flutter_yuedu/404.dart';
 import 'package:flutter_yuedu/video/video_detail.dart';
-import 'package:flutter_yuedu/book/pointer_event.dart';
-import 'package:flutter_yuedu/book/AnimationPage.dart';
+import 'package:flutter_yuedu/Other/pointer_event.dart';
+import 'package:flutter_yuedu/Other/AnimationPage.dart';
 import 'package:flutter_yuedu/picture/PictureDetail.dart';
 
 class Routes {
