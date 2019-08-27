@@ -27,7 +27,7 @@ dependencies:
   # Toast插件 https://github.com/OpenFlutter/flutter_oktoast
   oktoast: ^2.1.8
   # 网络库 https://github.com/flutterchina/dio
-  dio: ^1.0.17
+  dio: ^2.1.0
   # https://github.com/ReactiveX/rxdart
   rxdart: ^0.21.0
   # Dart 常用工具类库 https://github.com/Sky24n/common_utils
@@ -58,6 +58,8 @@ dependencies:
   bezier_chart: ^1.0.7
   # 路由框架 https://github.com/theyakka/fluro
   fluro: ^1.4.0
+
+  cookie_jar: ^1.0.0
 
   event_bus: 1.1.0
   date_format: 1.0.6
