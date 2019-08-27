@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'VideoDetailItem.dart';
 
 class VideoDetailPage extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class VideoDetailState extends State<VideoDetailPage> {
         body: Container(
           child: Column(
             children: <Widget>[
-              Container(color: Colors.cyan,height: 280, child: Image.network("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3441742992,2765570575&fm=26&gp=0.jpg",fit: BoxFit.fill,)),
+              Container(color: Colors.cyan,height: 200, child: Image.network("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3441742992,2765570575&fm=26&gp=0.jpg",fit: BoxFit.fill,)),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -54,13 +55,9 @@ class VideoDetailState extends State<VideoDetailPage> {
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         itemCount: 10,
-                        itemExtent: 80,
+                        itemExtent: 100,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                              child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text("item"),
-                          ));
+                          return VideoDetailItem();
                         }),
                   ))
             ],

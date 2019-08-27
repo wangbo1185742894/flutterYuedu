@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'book_home.dart';
+import 'package:flutter_yuedu/book/book_home.dart';
 
 class  CountContainer extends InheritedWidget{
 
@@ -20,7 +20,7 @@ class  CountContainer extends InheritedWidget{
   @override
   bool updateShouldNotify(CountContainer oldWidget) {
     // TODO: implement updateShouldNotify
-    return this.model.count != oldWidget.model.count;
+//    return this.model.count != oldWidget.model.count;
   }
 
 }

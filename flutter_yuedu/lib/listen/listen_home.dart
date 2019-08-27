@@ -64,10 +64,9 @@ class ListenHomeState extends State<ListenHome> {
           controller: _controller,
           slivers: <Widget>[
             SliverAppBar(
-              title: Text("header"),
-              floating: true,
+//              floating: true,
               flexibleSpace: Image.network(
-                  "http://photocdn.sohu.com/20130416/Img372885486.jpg"),
+                  "https://static001.geekbang.org/resource/image/7d/eb/7d5a36a8727ed68f241719b7768262eb.jpg",fit: BoxFit.cover,),
               expandedHeight: 348,
             ),
             SliverList(
