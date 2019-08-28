@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dart:io';
 import 'package:cookie_jar/cookie_jar.dart';
+import 'Api.dart';
 
 class HttpUtil extends Object {
   static HttpUtil instance;
@@ -16,7 +17,7 @@ class HttpUtil extends Object {
 
   HttpUtil() {
     option = BaseOptions(
-        baseUrl: "",
+        baseUrl: Api.BASE_URL,
         receiveTimeout: 5000,
         connectTimeout: 10000,
         headers: {
