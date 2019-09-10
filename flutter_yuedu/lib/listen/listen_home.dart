@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_yuedu/routers/routers.dart';
+import 'package:flutter_yuedu/routers/fluro_navigator.dart';
 class ListenHome extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -77,18 +78,23 @@ class ListenHomeState extends State<ListenHome> {
         ),
       ),
       floatingActionButton: RaisedButton(
-        onPressed: (_tagTop
-            ? () {
-                if (_tagTop == true) {
-                  _controller.animateTo(.0,
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.ease);
-                }
-              }
-            : null),
+        onPressed: toFilePage,
+//        (_tagTop
+//            ? () {
+//                if (_tagTop == true) {
+//                  _controller.animateTo(.0,
+//                      duration: Duration(milliseconds: 300),
+//                      curve: Curves.ease);
+//                }
+//              }
+//            : null),
         child: Text("top"),
       ),
     );
+  }
+
+  toFilePage(){
+    NavigatorUtils.push(context, Routes.fileTestPage);
   }
 
   @override
