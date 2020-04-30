@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FileTestPage extends StatefulWidget {
   @override
@@ -47,15 +47,31 @@ class FileTestPageState extends State<FileTestPage> {
     }
   }
 
+  Future  getCount() async{
+    SharedPreferences spre = await SharedPreferences.getInstance();
+    int count = (spre.getInt("count") ?? 0);
+    setState(() {
+      this.content = count.toString();
+    });
+
+  }
+
+  Future setCount()async{
+    SharedPreferences spre = await SharedPreferences.getInstance();
+    spre.setInt("count", 123456789);
+  }
+
   void save(){
-    writeContent("文件测试123455435");
+//    writeContent("文件测试123455435");
+  setCount();
   }
 
   void read()async{
-    String content = await readContent();
-    setState(() {
-      this.content = content;
-    });
+    getCount();
+//    String content = await readContent();
+//    setState(() {
+//      this.content = content;
+//    });
   }
 
   @override
